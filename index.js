@@ -2,6 +2,7 @@ const puppeteer = require("puppeteer");
 
 async function extractExercises() {
   const browser = await puppeteer.launch({
+    // headless: "new",
     headless: false,
     args: ["--no-sandbox", "--disable-setuid-sandbox"],
   });
@@ -70,12 +71,22 @@ async function extractExercises() {
           const paginationLinks = document.querySelectorAll(
             'a[aria-label^="Page"]'
           );
+
+          const arrPagination = Array.from(paginationLinks).map((item) =>
+            item.getAttribute("aria-label")
+          );
+
+          const totalLenght =
+            arrPagination[arrPagination.length - 1].match(/\d+/)[0];
+
+          console.log("totalLenght", totalLenght);
+
           const totalPages =
             paginationLinks.length > 0 ? paginationLinks.length : 1;
 
           // Process remaining pages if they exist
           if (totalPages > 1) {
-            for (let page = 2; page <= totalPages; page++) {
+            for (let page = 2; page <= totalLenght; page++) {
               const pageLink = document.querySelector(
                 `a[aria-label="Page ${page}"]`
               );
@@ -108,6 +119,8 @@ async function extractExercises() {
     console.error("Scraping failed:", error);
     throw error;
   } finally {
+    await new Promise((resolve) => setTimeout(resolve, 20000));
+
     await browser.close();
   }
 }
