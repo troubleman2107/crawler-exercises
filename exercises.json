@@ -1,0 +1,458 @@
+[
+  {
+    "muscleGroups": "Abs",
+    "exercises": [
+      {
+        "name": "Plank",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F2524.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Machine Ab Crunch",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F224.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Crunch",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F308.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Leg Raise",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F176.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Cable Kneeling Crunch",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F316.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Hanging Leg Raise",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F244.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Weight Plate Russian Twist",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F1356.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Air Bike",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F228.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Decline Crunch",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F312.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Dumbbell Side Bend",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F320.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Parallel Bar Leg Raise",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F5092.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Sit-Up",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F1380.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Weighted Crunch",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F3212.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Reverse Crunch",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F1352.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Parallel Bar Hip Raise",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F1340.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Bench Weighted Decline Crunch",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F2700.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Cable Wood Chop",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F2976.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Barbell Ab Rollout (Kneeling)",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F1176.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Barbell Bench Press",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F8.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Cable Lat Pulldown (Wide Grip)",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F344.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Dumbbell Lateral Raise",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F128.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Machine Leg Extension",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F520.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Cable Tricep Pushdown (Rope)",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F636.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Dumbbell Incline Bench Press",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F124.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Cable Seated Row",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F84.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Barbell Squat",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F48.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Machine Fly",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F180.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Machine Leg Press",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F528.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Dumbbell Seated Shoulder Press",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F192.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Dumbbell Bench Press",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F104.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Barbell Deadlift",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F372.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Dumbbell Alternating Bicep Curl",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F464.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Machine Seated Leg Curl",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F644.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Barbell Incline Bench Press",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F32.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Dumbbell One-Arm Row",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F360.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Barbell Bent-Over Row",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F12.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Plank",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F2524.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Machine Ab Crunch",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F224.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Crunch",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F308.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Leg Raise",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F176.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Cable Kneeling Crunch",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F316.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Hanging Leg Raise",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F244.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Weight Plate Russian Twist",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F1356.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Air Bike",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F228.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Decline Crunch",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F312.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Dumbbell Side Bend",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F320.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Parallel Bar Leg Raise",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F5092.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Sit-Up",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F1380.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Weighted Crunch",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F3212.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Reverse Crunch",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F1352.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Parallel Bar Hip Raise",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F1340.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Bench Weighted Decline Crunch",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F2700.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Cable Wood Chop",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F2976.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Barbell Ab Rollout (Kneeling)",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F1176.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Barbell Bench Press",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F8.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Cable Lat Pulldown (Wide Grip)",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F344.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Dumbbell Lateral Raise",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F128.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Machine Leg Extension",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F520.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Cable Tricep Pushdown (Rope)",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F636.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Dumbbell Incline Bench Press",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F124.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Cable Seated Row",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F84.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Barbell Squat",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F48.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Machine Fly",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F180.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Machine Leg Press",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F528.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Dumbbell Seated Shoulder Press",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F192.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Dumbbell Bench Press",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F104.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Barbell Deadlift",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F372.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Dumbbell Alternating Bicep Curl",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F464.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Machine Seated Leg Curl",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F644.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Barbell Incline Bench Press",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F32.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Dumbbell One-Arm Row",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F360.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Barbell Bent-Over Row",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F12.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Plank",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F2524.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Machine Ab Crunch",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F224.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Crunch",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F308.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Leg Raise",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F176.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Cable Kneeling Crunch",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F316.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Hanging Leg Raise",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F244.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Weight Plate Russian Twist",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F1356.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Air Bike",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F228.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Decline Crunch",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F312.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Dumbbell Side Bend",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F320.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Parallel Bar Leg Raise",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F5092.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Sit-Up",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F1380.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Weighted Crunch",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F3212.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Reverse Crunch",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F1352.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Parallel Bar Hip Raise",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F1340.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Bench Weighted Decline Crunch",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F2700.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Cable Wood Chop",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F2976.jpg&w=3840&q=75"
+      },
+      {
+        "name": "Barbell Ab Rollout (Kneeling)",
+        "type": "Body Weight",
+        "img": "https://www.jefit.com/_next/image?url=https%3A%2F%2Fcdn.jefit.com%2Fimages%2Fexercises%2F960_590%2F1176.jpg&w=3840&q=75"
+      }
+    ],
+    "totalExercises": 90
+  }
+]
