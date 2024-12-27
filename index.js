@@ -2,7 +2,7 @@ const puppeteer = require("puppeteer");
 
 async function extractExercises() {
   const browser = await puppeteer.launch({
-    headless: "new",
+    headless: false,
     args: ["--no-sandbox", "--disable-setuid-sandbox"],
   });
 
@@ -53,13 +53,12 @@ async function extractExercises() {
         const muscleGroup = button.querySelector("p")?.textContent.trim();
         console.log(`Processing muscle group: ${muscleGroup}`);
 
-        // Click the muscle group button
-        button.click();
-        await new Promise((resolve) => setTimeout(resolve, 2000));
-
         let allExercises = [];
 
         if (muscleGroup === "Abs") {
+          button.click();
+          // Click the muscle group button
+          await new Promise((resolve) => setTimeout(resolve, 2000));
           // Get exercises from first page
           const firstPageExercises = extractExercisesFromPage();
           allExercises = [...allExercises, ...firstPageExercises];
@@ -82,21 +81,6 @@ async function extractExercises() {
               );
               if (pageLink) {
                 pageLink.click();
-                await new Promise((resolve) => setTimeout(resolve, 2000));
-
-                // Click the muscle group button again after page change
-                const buttons = document.querySelectorAll(
-                  "div.flex.overflow-x-auto.gap-4 button"
-                );
-                for (const btn of buttons) {
-                  if (
-                    btn.querySelector("p")?.textContent.trim() === muscleGroup
-                  ) {
-                    btn.click();
-                    break;
-                  }
-                }
-
                 await new Promise((resolve) => setTimeout(resolve, 2000));
 
                 const pageExercises = extractExercisesFromPage();
