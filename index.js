@@ -1,99 +1,89 @@
 const puppeteer = require("puppeteer");
 
-async function extractButtonText() {
-  //   const browser = await puppeteer.launch({
-  //     headless: false,
-  //     devtools: true,
-  //   });
+async function extractExercises() {
+  const browser = await puppeteer.launch({
+    headless: "new", // Using new headless mode
+    args: ["--no-sandbox", "--disable-setuid-sandbox"],
+  });
 
-  const browser = await puppeteer.launch();
+  try {
+    const page = await browser.newPage();
 
-  const page = await browser.newPage();
+    // Enable console logging from the page
+    page.on("console", (msg) => console.log("Page log:", msg.text()));
 
-  // Enable console logging
-  page.on("console", (msg) => console.log("Page log:", msg.text()));
+    // Navigate to the page and wait for content to load
+    await page.goto("https://www.jefit.com/exercises", {
+      waitUntil: "networkidle0",
+      timeout: 30000,
+    });
 
-  await page.goto("https://www.jefit.com/exercises");
+    // Wait for the muscle group buttons to be present
+    await page.waitForSelector("div.flex.overflow-x-auto.gap-4 button");
 
-  const results = await page.evaluate(async () => {
-    const muscleGroups = document.querySelectorAll(
-      "div.flex.overflow-x-auto.gap-4 button"
-    );
+    const results = await page.evaluate(async () => {
+      const data = [];
 
-    const exercises = document.querySelectorAll(
-      "div.flex.flex-wrap.gap-x-12.gap-y-6.mt-10.justify-center.items-center a"
-    );
+      // Get all muscle group buttons
+      const muscleGroups = document.querySelectorAll(
+        "div.flex.overflow-x-auto.gap-4 button"
+      );
 
-    console.log(`Found ${muscleGroups.length} buttons`);
-    console.log(`Found ${exercises.length} exercises`);
+      for (const button of muscleGroups) {
+        const muscleGroup = button.querySelector("p")?.textContent.trim();
 
-    const data = [
-      {
-        muscleGroups: "Abs",
-        exercises: [
-          {
-            name: "plank",
-            type: "Body Weight",
-            img: "",
-          },
-        ],
-      },
-    ];
+        // Click the button and wait for new exercises to load
+        await new Promise((resolve) => {
+          button.click();
+          setTimeout(resolve, 2000); // Wait for content to update
+        });
 
-    muscleGroups.forEach(async (button, index) => {
-      const text = button.querySelector("p")?.textContent.trim();
-      console.log(`Button ${index}: ${text}`);
-
-      if (text === "Abs") {
-        button.click();
-
-        await new Promise((resolve) => setTimeout(resolve, 2000));
-
-        const exercises = document.querySelector(
+        // Get exercises for this muscle group
+        const exercises = document.querySelectorAll(
           "div.flex.flex-wrap.gap-x-12.gap-y-6.mt-10.justify-center.items-center a"
         );
 
-        console.log("exercises", exercises);
+        const exerciseList = [];
+        exercises.forEach((exercise) => {
+          const nameElement = exercise.querySelector(
+            "div.h-28.p-4.bg-white.rounded-b-xl.flex.flex-col.justify-around.items-start p"
+          );
 
-        // exercises.forEach((exercise) => {
-        //   console.log(exercise);
-        // const div = exercise.querySelector(
-        //   "div.h-28.p-4.bg-white.rounded-b-xl.flex.flex-col.justify-around.items-start"
-        // );
-        // console.log(div);
-        //   const p = div.querySelector(
-        //     'p[data-slot="text"].text-xl\\/6.dark:d-main-black.tracking-tight.font-semibold.text-jefit-blue'
-        //   );
-        // });
+          const imgElement = exercise.querySelector("img");
 
-        // const nameOfExercise = Array.from(exercises).map((exercise) => {
-        //   const text = exercise
-        //     .querySelector(
-        //       'p[data-slot="text"].text-xl\\/6.dark:d-main-black.tracking-tight.font-semibold.text-jefit-blue'
-        //     )
-        //     .textContent.trim();
-        //   return text;
-        // });
+          if (nameElement) {
+            exerciseList.push({
+              name: nameElement.textContent.trim(),
+              type: "Body Weight", // You might want to extract this dynamically
+              img: imgElement ? imgElement.src : "",
+            });
+          }
+        });
 
-        // const specificSpan = document.querySelector(
-        //   'span[data-slot="text"].text-base\\/6.text-main-black'
-        // );
-
-        // if (specificSpan) {
-        //   const text = specificSpan.textContent.trim();
-        //   console.log("Found specific text:", text);
-        // }
+        data.push({
+          muscleGroups: muscleGroup,
+          exercises: exerciseList,
+        });
       }
+
+      return data;
     });
 
-    return "hello";
-  });
-
-  // Wait for debugging
-  await new Promise((resolve) => setTimeout(resolve, 5000));
-
-  await browser.close();
-  return results;
+    return results;
+  } catch (error) {
+    console.error("Scraping failed:", error);
+    throw error;
+  } finally {
+    await browser.close();
+  }
 }
 
-extractButtonText().catch(console.error);
+// Execute the scraper with proper error handling
+(async () => {
+  try {
+    const exercises = await extractExercises();
+    console.log("Scraped exercises:", JSON.stringify(exercises, null, 2));
+  } catch (error) {
+    console.error("Failed to extract exercises:", error);
+  }
+})();
