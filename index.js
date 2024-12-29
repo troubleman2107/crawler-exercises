@@ -2,8 +2,8 @@ const puppeteer = require("puppeteer");
 
 async function extractExercises() {
   const browser = await puppeteer.launch({
-    // headless: "new",
-    headless: false,
+    headless: "new",
+    // headless: false,
     args: ["--no-sandbox", "--disable-setuid-sandbox"],
   });
 
@@ -46,9 +46,11 @@ async function extractExercises() {
         return exerciseList;
       };
 
-      const muscleGroups = document.querySelectorAll(
-        "div.flex.overflow-x-auto.gap-4 button"
+      const muscleGroupsMultiple = document.querySelectorAll(
+        "div.flex.overflow-x-auto.gap-4"
       );
+
+      const muscleGroups = muscleGroupsMultiple[0].querySelectorAll("button");
 
       for (const button of muscleGroups) {
         const muscleGroup = button.querySelector("p")?.textContent.trim();
@@ -56,59 +58,61 @@ async function extractExercises() {
 
         let allExercises = [];
 
-        if (muscleGroup === "Abs") {
-          button.click();
-          // Click the muscle group button
-          await new Promise((resolve) => setTimeout(resolve, 2000));
-          // Get exercises from first page
-          const firstPageExercises = extractExercisesFromPage();
-          allExercises = [...allExercises, ...firstPageExercises];
-          console.log(
-            `Found ${firstPageExercises.length} exercises on page 1 for ${muscleGroup}`
-          );
+        // if (muscleGroup === "Abs" || muscleGroup === "Back") {
+        button.click();
+        // Click the muscle group button
+        await new Promise((resolve) => setTimeout(resolve, 2000));
+        // Get exercises from first page
+        const firstPageExercises = extractExercisesFromPage();
+        allExercises = [...allExercises, ...firstPageExercises];
+        console.log(
+          `Found ${firstPageExercises.length} exercises on page 1 for ${muscleGroup}`
+        );
 
-          // Check for pagination
-          const paginationLinks = document.querySelectorAll(
-            'a[aria-label^="Page"]'
-          );
+        // Check for pagination
+        const paginationLinks = document.querySelectorAll(
+          'a[aria-label^="Page"]'
+        );
 
-          const arrPagination = Array.from(paginationLinks).map((item) =>
-            item.getAttribute("aria-label")
-          );
+        const arrPagination = Array.from(paginationLinks).map((item) =>
+          item.getAttribute("aria-label")
+        );
 
-          const totalLenght =
-            arrPagination[arrPagination.length - 1].match(/\d+/)[0];
+        const totalLenght =
+          arrPagination[arrPagination.length - 1].match(/\d+/)[0];
 
-          console.log("totalLenght", totalLenght);
+        console.log("totalLenght", totalLenght);
 
-          const totalPages =
-            paginationLinks.length > 0 ? paginationLinks.length : 1;
+        const totalPages =
+          paginationLinks.length > 0 ? paginationLinks.length : 1;
 
-          // Process remaining pages if they exist
-          if (totalPages > 1) {
-            for (let page = 2; page <= totalLenght; page++) {
-              const pageLink = document.querySelector(
-                `a[aria-label="Page ${page}"]`
+        // Process remaining pages if they exist
+        if (totalPages > 1) {
+          for (let page = 2; page <= totalLenght; page++) {
+            const pageLink = document.querySelector(
+              `a[aria-label="Page ${page}"]`
+            );
+            if (pageLink) {
+              pageLink.click();
+              await new Promise((resolve) => setTimeout(resolve, 2000));
+
+              const pageExercises = extractExercisesFromPage();
+              allExercises = [...allExercises, ...pageExercises];
+              console.log(
+                `Found ${pageExercises.length} exercises on page ${page} for ${muscleGroup}`
               );
-              if (pageLink) {
-                pageLink.click();
-                await new Promise((resolve) => setTimeout(resolve, 2000));
-
-                const pageExercises = extractExercisesFromPage();
-                allExercises = [...allExercises, ...pageExercises];
-                console.log(
-                  `Found ${pageExercises.length} exercises on page ${page} for ${muscleGroup}`
-                );
-              }
             }
           }
-
-          data.push({
-            muscleGroups: muscleGroup,
-            exercises: allExercises,
-            totalExercises: allExercises.length,
-          });
         }
+
+        data.push({
+          muscleGroups: muscleGroup,
+          exercises: allExercises,
+          totalExercises: allExercises.length,
+        });
+
+        button.click();
+        // }
       }
 
       return data;
