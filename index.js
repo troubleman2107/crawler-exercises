@@ -30,15 +30,37 @@ async function extractExercises() {
 
         const exerciseList = [];
         exercises.forEach((exercise) => {
-          const nameElement = exercise.querySelector(
+          const nameElement = exercise.querySelectorAll(
             "div.h-28.p-4.bg-white.rounded-b-xl.flex.flex-col.justify-around.items-start p"
           );
           const imgElement = exercise.querySelector("img");
 
+          const equipmentArray = Array.from(
+            muscleGroupsMultiple[1].querySelectorAll("button")
+          ).map((item) => {
+            return {
+              name: item.querySelector("p").textContent.trim(),
+              img: item.querySelector("img").src,
+            };
+          });
+
+          equipmentArray.forEach((item) => {
+            console.log("equipment name", item.name);
+          });
+
+          const imgEquipment = equipmentArray.find(
+            (item) =>
+              item.name ===
+              nameElement[1].textContent.match(/\/\s*(.+)$/)[1].trim()
+          )?.img;
+
           if (nameElement) {
             exerciseList.push({
-              name: nameElement.textContent.trim(),
-              type: "Body Weight",
+              name: nameElement[0].textContent.trim(),
+              equipment: {
+                name: nameElement[1].textContent.trim(),
+                img: imgEquipment ? imgEquipment : "",
+              },
               img: imgElement ? imgElement.src : "",
             });
           }
@@ -58,7 +80,7 @@ async function extractExercises() {
 
         let allExercises = [];
 
-        // if (muscleGroup === "Abs" || muscleGroup === "Back") {
+        // if (muscleGroup === "Abs") {
         button.click();
         // Click the muscle group button
         await new Promise((resolve) => setTimeout(resolve, 2000));
@@ -107,6 +129,9 @@ async function extractExercises() {
 
         data.push({
           muscleGroups: muscleGroup,
+          img: button.querySelector("img")
+            ? button.querySelector("img").src
+            : "",
           exercises: allExercises,
           totalExercises: allExercises.length,
         });
