@@ -1,155 +1,207 @@
 const puppeteer = require("puppeteer");
+const fs = require("fs");
+const cliProgress = require("cli-progress");
+const colors = require("ansi-colors");
+
+const URLPage = "https://www.jefit.com";
 
 async function extractExercises() {
   const browser = await puppeteer.launch({
-    headless: "new",
-    // headless: false,
+    headless: false,
     args: ["--no-sandbox", "--disable-setuid-sandbox"],
   });
 
+  // Create progress bars
+  const multibar = new cliProgress.MultiBar(
+    {
+      clearOnComplete: false,
+      hideCursor: true,
+      format: "{bar} {percentage}% | {value}/{total} | {status}",
+    },
+    cliProgress.Presets.shades_grey
+  );
+
   try {
     const page = await browser.newPage();
-
     page.on("console", (msg) => console.log("Page log:", msg.text()));
 
-    await page.goto("https://www.jefit.com/exercises", {
+    console.log(colors.cyan.bold("\n🚀 Starting exercise scraper..."));
+
+    await page.goto(`${URLPage}/exercises`, {
       waitUntil: "networkidle0",
       timeout: 30000,
     });
 
     await page.waitForSelector("div.flex.overflow-x-auto.gap-4 button");
 
-    const results = await page.evaluate(async () => {
-      const data = [];
+    const data = [];
 
-      // Helper function to extract exercises from current page
-      const extractExercisesFromPage = () => {
-        const exercises = document.querySelectorAll(
-          "div.flex.flex-wrap.gap-x-12.gap-y-6.mt-10.justify-center.items-center a"
-        );
+    // Get muscle group count for main progress bar
+    const muscleGroupButtonsContainer = await page.$$(
+      "div.flex.overflow-x-auto.gap-4"
+    );
+    const muscleGroupButtons = await muscleGroupButtonsContainer[0].$$(
+      "button"
+    );
 
-        const exerciseList = [];
-        exercises.forEach((exercise) => {
-          const nameElement = exercise.querySelectorAll(
-            "div.h-28.p-4.bg-white.rounded-b-xl.flex.flex-col.justify-around.items-start p"
-          );
-          const imgElement = exercise.querySelector("img");
+    const muscleGroupButtons2 = await muscleGroupButtonsContainer[1].$$(
+      "button"
+    );
 
-          const equipmentArray = Array.from(
-            muscleGroupsMultiple[1].querySelectorAll("button")
-          ).map((item) => {
-            return {
-              name: item.querySelector("p").textContent.trim(),
-              img: item.querySelector("img").src,
-            };
-          });
+    console.log(
+      "🚀 ~ extractExercises ~ muscleGroupButtons:",
+      muscleGroupButtons
+    );
 
-          equipmentArray.forEach((item) => {
-            console.log("equipment name", item.name);
-          });
+    const totalMuscleGroups = muscleGroupButtons.length;
 
-          const imgEquipment = equipmentArray.find(
-            (item) =>
-              item.name ===
-              nameElement[1].textContent.match(/\/\s*(.+)$/)[1].trim()
-          )?.img;
+    // Create main progress bar for muscle groups
+    const muscleGroupBar = multibar.create(totalMuscleGroups, 0, {
+      status: "Processing muscle groups",
+    });
 
-          if (nameElement) {
-            exerciseList.push({
-              name: nameElement[0].textContent.trim(),
-              equipment: {
-                name: nameElement[1].textContent.match(/\/\s*(.+)$/)[1].trim(),
-                img: imgEquipment ? imgEquipment : "",
-              },
-              img: imgElement ? imgElement.src : "",
-            });
-          }
-        });
-        return exerciseList;
-      };
+    for (
+      let muscleGroupIndex = 0;
+      muscleGroupIndex < muscleGroupButtons.length;
+      muscleGroupIndex++
+    ) {
+      const button = muscleGroupButtons[muscleGroupIndex];
 
-      const muscleGroupsMultiple = document.querySelectorAll(
-        "div.flex.overflow-x-auto.gap-4"
+      const muscleGroupName = await button.$eval("p", (el) =>
+        el.textContent.trim()
+      );
+      const muscleGroupImg = await button
+        .$eval("img", (el) => el.src)
+        .catch(() => "");
+
+      console.log(
+        colors.yellow(`\n📌 Processing muscle group: ${muscleGroupName}`)
       );
 
-      const muscleGroups = muscleGroupsMultiple[0].querySelectorAll("button");
+      await button.click();
+      await new Promise((resolve) => setTimeout(resolve, 2000));
 
-      for (const button of muscleGroups) {
-        const muscleGroup = button.querySelector("p")?.textContent.trim();
-        console.log(`Processing muscle group: ${muscleGroup}`);
+      const paginationLinks = await page.$$('a[aria-label^="Page"]');
+      const totalPages =
+        paginationLinks.length > 0
+          ? await paginationLinks[paginationLinks.length - 1].$eval(
+              "span",
+              (el) => parseInt(el.textContent)
+            )
+          : 1;
 
-        let allExercises = [];
+      // Create progress bar for pages within current muscle group
+      const pageBar = multibar.create(totalPages, 0, {
+        status: `Pages for ${muscleGroupName}`,
+      });
 
-        // if (muscleGroup === "Abs") {
-        button.click();
-        // Click the muscle group button
-        await new Promise((resolve) => setTimeout(resolve, 2000));
-        // Get exercises from first page
-        const firstPageExercises = extractExercisesFromPage();
-        allExercises = [...allExercises, ...firstPageExercises];
-        console.log(
-          `Found ${firstPageExercises.length} exercises on page 1 for ${muscleGroup}`
-        );
+      let allExercises = [];
 
-        // Check for pagination
-        const paginationLinks = document.querySelectorAll(
-          'a[aria-label^="Page"]'
-        );
-
-        const arrPagination = Array.from(paginationLinks).map((item) =>
-          item.getAttribute("aria-label")
-        );
-
-        const totalLenght =
-          arrPagination[arrPagination.length - 1].match(/\d+/)[0];
-
-        console.log("totalLenght", totalLenght);
-
-        const totalPages =
-          paginationLinks.length > 0 ? paginationLinks.length : 1;
-
-        // Process remaining pages if they exist
-        if (totalPages > 1) {
-          for (let page = 2; page <= totalLenght; page++) {
-            const pageLink = document.querySelector(
-              `a[aria-label="Page ${page}"]`
-            );
-            if (pageLink) {
-              pageLink.click();
-              await new Promise((resolve) => setTimeout(resolve, 2000));
-
-              const pageExercises = extractExercisesFromPage();
-              allExercises = [...allExercises, ...pageExercises];
-              console.log(
-                `Found ${pageExercises.length} exercises on page ${page} for ${muscleGroup}`
-              );
-            }
+      for (let currentPage = 1; currentPage <= totalPages; currentPage++) {
+        if (currentPage > 1) {
+          const pageLink = await page.$(`a[aria-label="Page ${currentPage}"]`);
+          if (pageLink) {
+            await pageLink.click();
+            await new Promise((resolve) => setTimeout(resolve, 2000));
           }
         }
 
-        data.push({
-          muscleGroups: muscleGroup,
-          img: button.querySelector("img")
-            ? button.querySelector("img").src
-            : "",
-          exercises: allExercises,
-          totalExercises: allExercises.length,
+        const exerciseLinks = await page.$$(
+          "div.flex.flex-wrap.gap-x-12.gap-y-6.mt-10.justify-center.items-center a"
+        );
+
+        // Create progress bar for exercises on current page
+        const exerciseBar = multibar.create(exerciseLinks.length, 0, {
+          status: `Exercises on page ${currentPage}`,
         });
 
-        button.click();
-        // }
+        for (
+          let exerciseIndex = 0;
+          exerciseIndex < exerciseLinks.length;
+          exerciseIndex++
+        ) {
+          const exerciseLink = exerciseLinks[exerciseIndex];
+
+          await exerciseLink.evaluate((node) => node.scrollIntoView());
+
+          const exerciseInfo = await exerciseLink.$$eval(
+            "div.h-28.p-4.bg-white.rounded-b-xl.flex.flex-col.justify-around.items-start p",
+            (elements) => ({
+              name: elements[0]?.textContent.trim() || "",
+              equipment:
+                elements[1]?.textContent.match(/\/\s*(.+)$/)?.[1].trim() || "",
+            })
+          );
+
+          const exerciseImg = await exerciseLink
+            .$eval("img", (el) => el.src)
+            .catch(() => "");
+
+          const equipmentInfo = await page.evaluate((equipmentName) => {
+            const equipmentButtons = Array.from(
+              document
+                .querySelectorAll("div.flex.overflow-x-auto.gap-4")[1]
+                .querySelectorAll("button")
+            );
+            const equipment = equipmentButtons.find(
+              (button) =>
+                button.querySelector("p")?.textContent.trim() === equipmentName
+            );
+            return equipment ? equipment.querySelector("img")?.src : "";
+          }, exerciseInfo.equipment);
+
+          allExercises.push({
+            name: exerciseInfo.name,
+            equipment: {
+              name: exerciseInfo.equipment,
+              img: equipmentInfo || "",
+            },
+            img: exerciseImg,
+          });
+
+          // Update exercise progress
+          exerciseBar.update(exerciseIndex + 1, {
+            status: `Processing: ${exerciseInfo.name}`,
+          });
+        }
+
+        // Update page progress
+        pageBar.update(currentPage, {
+          status: `Completed page ${currentPage}/${totalPages}`,
+        });
+
+        // Remove exercise bar after page completion
+        multibar.remove(exerciseBar);
       }
 
-      return data;
-    });
+      data.push({
+        muscleGroups: muscleGroupName,
+        img: muscleGroupImg,
+        exercises: allExercises,
+        totalExercises: allExercises.length,
+      });
 
-    return results;
+      await button.click();
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+
+      // Update muscle group progress
+      muscleGroupBar.update(muscleGroupIndex + 1, {
+        status: `Completed: ${muscleGroupName}`,
+      });
+
+      // Remove page bar after muscle group completion
+      multibar.remove(pageBar);
+    }
+
+    // Stop progress bars
+    multibar.stop();
+
+    return data;
   } catch (error) {
-    console.error("Scraping failed:", error);
+    console.error(colors.red.bold("\n❌ Scraping failed:"), error);
     throw error;
   } finally {
     await new Promise((resolve) => setTimeout(resolve, 20000));
-
     await browser.close();
   }
 }
@@ -157,14 +209,15 @@ async function extractExercises() {
 // Execute the scraper
 (async () => {
   try {
+    console.log(colors.cyan.bold("\n🔍 Starting exercise extraction...\n"));
     const exercises = await extractExercises();
-    console.log("Scraped exercises:", JSON.stringify(exercises, null, 2));
 
-    // Save to file
-    const fs = require("fs");
+    console.log(colors.green.bold("\n✅ Scraping completed successfully!"));
+    console.log(colors.yellow("\n📝 Writing data to file..."));
+
     fs.writeFileSync("exercises.json", JSON.stringify(exercises, null, 2));
-    console.log("Data saved to exercises.json");
+    console.log(colors.green("\n✨ Data saved to exercises.json\n"));
   } catch (error) {
-    console.error("Failed to extract exercises:", error);
+    console.error(colors.red.bold("\n❌ Failed to extract exercises:"), error);
   }
 })();
