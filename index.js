@@ -58,7 +58,7 @@ async function extractExercises() {
             exerciseList.push({
               name: nameElement[0].textContent.trim(),
               equipment: {
-                name: nameElement[1].textContent.trim(),
+                name: nameElement[1].textContent.match(/\/\s*(.+)$/)[1].trim(),
                 img: imgEquipment ? imgEquipment : "",
               },
               img: imgElement ? imgElement.src : "",
